@@ -12,12 +12,15 @@ const Login = () => {
         validationError: null
     });
 
-    const onChange = e => {
+    const onChange = text => e => {
+        setUserInput({...userInput, [e.target.name]: e.target.value})
 
+        console.log(userInput)
     }
 
     const onsubmit = e => {
         e.preventDefault()
+        console.log(userInput)
     }
 
     return (
@@ -25,7 +28,7 @@ const Login = () => {
             <div className="mainRow flexJustifyCenter">
                 <div className="login">
                     <div className="loginBox">
-                        <h3 className="txtUpper">Sign in to your account</h3>
+                        <h3 className="txtUpper">Sign into your account</h3>
                         <h5>
                             If you already have a Rimowa account, please sign in. We'll use
                             your existing details for a speedier checkout.
@@ -41,7 +44,7 @@ const Login = () => {
                                     placeholder="email address"
                                     name="email"
                                     value={userInput.email}
-                                    onChange={onChange}
+                                    onChange={onChange(userInput.email)}
                                 />
                                 <p className="showError"> {userInput.emailError} </p>
                             </div>
@@ -52,7 +55,7 @@ const Login = () => {
                                     placeholder="password"
                                     name="password"
                                     value={userInput.password}
-                                    onChange={onChange}
+                                    onChange={onChange(userInput.password)}
                                 />
                                 <p className="showError"> {userInput.passwordError} </p>
                             </div>
@@ -80,7 +83,7 @@ const Login = () => {
                             <li>REGISTER MY RIMOWA</li>
                         </ul>
                         <form action="" className="signUpBtn">
-                            <button>Create Account</button>
+                            <button type="submit">Create Account</button>
                         </form>
                     </div>
                 </div>
